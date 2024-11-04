@@ -1,6 +1,6 @@
 # LLM-based News Recommendation Web Application
 
-A LLM-based News article recommendation web application. Receives URL or a text corpus as input, performs index searching with [Facebook AI Similarity Search](https://github.com/facebookresearch/faiss) (FAISS), and returns hyperlinks of the most similar articles in the database. If URL is used as an input, the application will automatically run a scraper to scrape the articles.
+LLM-based News article recommendation web application. Receives URL or a text corpus as input, performs index searching with [Facebook AI Similarity Search](https://github.com/facebookresearch/faiss) (FAISS), and returns hyperlinks of the most similar articles in the database. If URL is used as an input, the application will automatically run a scraper to scrape the articles.
 
 All the articles, including the input, will be summarized with a [Bart model](https://huggingface.co/docs/transformers/model_doc/bart) by default (or a [T5 model](https://huggingface.co/docs/transformers/model_doc/t5)) before getting encoded by a [SentenceTransformer](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2), which maps sentences and paragraphs to a 384-dimensional dense vector space. The index search algorithm will then compare the input vector and the database, returning the indices of the Top 5 results. The final output will be retrieved from our dataset based on the indices.
 
