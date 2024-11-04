@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Search Results</h1>
+        {% if results is not none and results|length > 0 %}
+            <div class="results-list">
+                {% for headline, url in results.items() %}
+                    <div class="result-item">
+                        <a href="{{ url }}" target="_blank">{{ headline }}</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+
+        <div class="back-link">
+            <a href="{{ url_for('index') }}">Back to Search</a>
+        </div>
+    </div>
+</body>
+</html>
